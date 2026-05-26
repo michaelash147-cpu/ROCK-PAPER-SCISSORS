@@ -17,5 +17,35 @@ const getHumanChoice = () => {
 let humanScore = 0;
 let computerScore = 0;
 
-//console.log(getComputerChoice());
-//console.log(getHumanChoice());
+let computerChoice = getComputerChoice().toLowerCase();
+let humanChoice = getHumanChoice().toLowerCase();
+
+const playRound = (humanChoice, computerChoice) => {
+
+    if (humanChoice === computerChoice) {
+        return "tie" + humanChoice + computerChoice;
+    } else if (computerChoice === "rock") {
+        if (humanChoice === "paper") {
+            return "win";
+        } else {
+            return "lose";
+        }
+    } else if (computerChoice === "paper") {
+        if (humanChoice === "scissors") {
+            return "win";
+        } else {
+            return "lose";
+        }
+    } else if (humanChoice === "rock") {
+        return "win";
+    } else {
+        return "lose";
+    }
+   
+};
+
+console.log("computer: " + computerChoice);
+console.log("human: " + humanChoice);
+console.log(playRound(humanChoice, computerChoice));
+
+
