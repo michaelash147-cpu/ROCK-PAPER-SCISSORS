@@ -20,36 +20,24 @@ let computerScore = 0;
 let computerChoice = getComputerChoice().toLowerCase();
 let humanChoice = getHumanChoice().toLowerCase();
 
-
-const playRound = (humanChoice, computerChoice) => {
-    let winnerMessage = "You win!";
-    let loserMessage = "You lose!";
-    if (humanChoice === computerChoice) {
-        return "tie";
-    } else if (computerChoice === "rock") {
-        if (humanChoice === "paper") {
-            return winnerMessage;
-        } else {
-            return loserMessage;
-        }
-    } else if (computerChoice === "paper") {
-        if (humanChoice === "scissors") {
-            return winnerMessage;
-        } else {
-            return loserMessage;
-        }
-    } else if (humanChoice === "rock") {
-        return winnerMessage;
-    } else {
-        return loserMessage;
-    }
-}; 
-
+let winnerMessage = "You win!";
+let loserMessage = "You lose!";
 
 //return tie if humanChoice === computerChoice
 //return winnerMessage if (rock-paper OR paper-scissors OR scissors-rock)
 //return loserMessage if (rock-scissors OR paper-rock OR paper-scissors)
 
+const playRound = (humanChoice, computerChoice) => {
+    let a = computerChoice;
+    let b = humanChoice;
+    if (humanChoice === computerChoice) {
+        return "tie!"
+    } else if ((a==="rock" && b==="paper") || (a==="paper" && b==="scissors") || (a==="scissors" && b==="rock")) {
+        return winnerMessage;
+    } else {
+        return loserMessage;
+    }
+};
 
 
 
