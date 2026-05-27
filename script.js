@@ -17,9 +17,6 @@ const getHumanChoice = () => {
 let humanScore = 0;
 let computerScore = 0;
 
-let computerChoice = getComputerChoice().toLowerCase();
-let humanChoice = getHumanChoice().toLowerCase();
-
 let winnerMessage = "You win!";
 let loserMessage = "You lose!";
 
@@ -27,41 +24,46 @@ let loserMessage = "You lose!";
 //return winnerMessage if (rock-paper OR paper-scissors OR scissors-rock)
 //return loserMessage if (rock-scissors OR paper-rock OR paper-scissors)
 
-const playRound = (humanChoice, computerChoice) => {
-    let a = computerChoice;
-    let b = humanChoice;
-    if (humanChoice === computerChoice) {
-        return "tie!"
-    } else if ((a==="rock" && b==="paper") || (a==="paper" && b==="scissors") || (a==="scissors" && b==="rock")) {
-        return winnerMessage;
-    } else {
-        return loserMessage;
-    }
-};
-
 
 
 
 const playGame = () => {
-    //loop through five rounds calling playRound each time
-    //keep track of score by appending result of each playRound call to the end of humanScore
-    //declare winner
-
-    for (let i = 0; i < 5; i++) {
-        if (playRound(humanChoice, computerChoice) === "human") {
-            humanScore++
+    let overallScore = 0;
+    const playRound = (humanChoice, computerChoice) => {
+        let a = computerChoice;
+        let b = humanChoice;
+        if (humanChoice === computerChoice) {
+            return "tie!" + " " + computerChoice + " " + humanChoice 
+        } else if ((a==="rock" && b==="paper") || (a==="paper" && b==="scissors") || (a==="scissors" && b==="rock")) {
+            return winnerMessage;
         } else {
-            computerScore++
+            return loserMessage;
         }
+    };
+
+
+    for (let i = 1; i <= 5; i++) {
+        let gameResult = playRound(getHumanChoice(), getComputerChoice());
+        if (gameResult === winnerMessage) {
+            overallScore++
+        } else if (gameResult === loserMessage) {
+            overallScore-- 
+        } 
+        console.log(overallScore)
     }
 
-    return "human: " + humanScore + "\n" + "computer: " + computerScore;
- 
+    if (overallScore > 0) {
+        return "you win! overall score: " + overallScore
+    } else if (overallScore === 0) {
+        return "it's a tie! overall score: " + overallScore
+    } else {
+        return "you lose! overall score: " + overallScore
+    }
 };
 
 
 //console.log("computer: " + computerChoice);
 //console.log("human: " + humanChoice);
-console.log(playGame(humanChoice, computerChoice));
-
-
+//console.log(playGame(humanChoice, computerChoice));
+//console.log(playRound(getHumanChoice(), getComputerChoice()));
+console.log(playGame());
