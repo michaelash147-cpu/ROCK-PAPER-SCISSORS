@@ -1,4 +1,4 @@
-const getComputerChoice = () => {
+function getComputerChoice() {
     let randomNum = Math.random();
     if (randomNum < 1/3) {
         return "rock";
@@ -7,63 +7,38 @@ const getComputerChoice = () => {
     } else {
         return "scissors";
     }
-    
 };
 
-const getHumanChoice = () => {
-    return prompt("Rock paper or scissors?");
-}
+function getHumanChoice() {
+    return prompt("rock paper or scissors");
+};
 
-let humanScore = 0;
-let computerScore = 0;
-
-let winnerMessage = "You win!";
-let loserMessage = "You lose!";
-
-//return tie if humanChoice === computerChoice
-//return winnerMessage if (rock-paper OR paper-scissors OR scissors-rock)
-//return loserMessage if (rock-scissors OR paper-rock OR paper-scissors)
-
-
-
-
-const playGame = () => {
-    let overallScore = 0;
-    const playRound = (humanChoice, computerChoice) => {
-        let a = computerChoice;
-        let b = humanChoice;
-        if (humanChoice === computerChoice) {
-            return "tie!" + " " + computerChoice + " " + humanChoice 
-        } else if ((a==="rock" && b==="paper") || (a==="paper" && b==="scissors") || (a==="scissors" && b==="rock")) {
-            return winnerMessage;
+function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
+    let game = ""
+    function playRound(humanChoice, computerChoice) {
+        if (humanChoice===computerChoice) {
+            return "tie!"
+        } else if ((humanChoice==="rock" && computerChoice==="scissors")||(humanChoice==="paper" && computerChoice==="rock")||(humanChoice==="scissors" && computerChoice==="paper")) {
+            humanScore++
+            return "you win!" + " " + humanChoice + " beats " + computerChoice; 
         } else {
-            return loserMessage;
+            computerScore++
+            return "you lose!" + " " + computerChoice + " beats " + humanChoice;
         }
     };
-
-
-    for (let i = 1; i <= 5; i++) {
-        let gameResult = playRound(getHumanChoice(), getComputerChoice());
-        if (gameResult === winnerMessage) {
-            overallScore++
-        } else if (gameResult === loserMessage) {
-            overallScore-- 
-        } 
-        console.log(overallScore)
+    for (let i=0; i<5; i++) {
+        game = playRound(getHumanChoice(), getComputerChoice());
+        console.log(game)
+        
     }
-
-    if (overallScore > 0) {
-        return "you win! overall score: " + overallScore
-    } else if (overallScore === 0) {
-        return "it's a tie! overall score: " + overallScore
-    } else {
-        return "you lose! overall score: " + overallScore
-    }
+    return console.log("your score: " + humanScore)
 };
 
+playGame();
 
-//console.log("computer: " + computerChoice);
-//console.log("human: " + humanChoice);
-//console.log(playGame(humanChoice, computerChoice));
-//console.log(playRound(getHumanChoice(), getComputerChoice()));
-console.log(playGame());
+
+
+
+
