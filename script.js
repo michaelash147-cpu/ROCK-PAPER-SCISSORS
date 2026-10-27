@@ -27,14 +27,22 @@ function playGame() {
             return "you lose!" + " " + computerChoice + " beats " + humanChoice;
         }
     };
+    /*
     for (let i=0; i<5; i++) {
         console.log(playRound(getHumanChoice(), getComputerChoice()));
         
-    }
+    }*/
     return console.log("your score: " + humanScore)
 };
 
 playGame();
+
+let rockButton = document.createElement("button");
+let paperButton = document.createElement("button");
+let scissorsButton = document.createElement("button");
+
+
+
 
 
 
