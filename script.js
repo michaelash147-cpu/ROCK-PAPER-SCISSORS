@@ -16,7 +16,6 @@ function getHumanChoice() {
 function playGame() {
     let humanScore = 0;
     let computerScore = 0;
-    let game = ""
     function playRound(humanChoice, computerChoice) {
         if (humanChoice===computerChoice) {
             return "tie!"
@@ -29,8 +28,7 @@ function playGame() {
         }
     };
     for (let i=0; i<5; i++) {
-        game = playRound(getHumanChoice(), getComputerChoice());
-        console.log(game)
+        console.log(playRound(getHumanChoice(), getComputerChoice()));
         
     }
     return console.log("your score: " + humanScore)
