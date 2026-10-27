@@ -13,6 +13,19 @@ function getHumanChoice() {
     return prompt("rock paper or scissors");
 };
 
+function playRound(humanChoice, computerChoice) {
+        if (humanChoice===computerChoice) {
+            return "tie!"
+        } else if ((humanChoice==="rock" && computerChoice==="scissors")||(humanChoice==="paper" && computerChoice==="rock")||(humanChoice==="scissors" && computerChoice==="paper")) {
+            humanScore++
+            return "you win!" + " " + humanChoice + " beats " + computerChoice; 
+        } else {
+            computerScore++
+            return "you lose!" + " " + computerChoice + " beats " + humanChoice;
+        }
+    }
+
+        /*
 function playGame() {
     let humanScore = 0;
     let computerScore = 0;
@@ -31,17 +44,17 @@ function playGame() {
     for (let i=0; i<5; i++) {
         console.log(playRound(getHumanChoice(), getComputerChoice()));
         
-    }*/
+    }
     return console.log("your score: " + humanScore)
-};
+}; 
 
-playGame();
+*/
 
 let rockButton = document.createElement("button");
 let paperButton = document.createElement("button");
 let scissorsButton = document.createElement("button");
 
-
+rockButton.addEventListener("click", playRound())
 
 
 
