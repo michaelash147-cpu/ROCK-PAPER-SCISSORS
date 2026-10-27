@@ -13,12 +13,15 @@ function getHumanChoice() {
     return prompt("rock paper or scissors");
 };
 
+let humanScore = 0;
+let computerScore = 0;
+
 function playRound(humanChoice, computerChoice) {
         if (humanChoice===computerChoice) {
-            return "tie!"
+            return "tie!";
         } else if ((humanChoice==="rock" && computerChoice==="scissors")||(humanChoice==="paper" && computerChoice==="rock")||(humanChoice==="scissors" && computerChoice==="paper")) {
             humanScore++
-            return "you win!" + " " + humanChoice + " beats " + computerChoice; 
+            return "you win!" + " " + humanChoice + " beats " + computerChoice;
         } else {
             computerScore++
             return "you lose!" + " " + computerChoice + " beats " + humanChoice;
@@ -54,7 +57,29 @@ let rockButton = document.createElement("button");
 let paperButton = document.createElement("button");
 let scissorsButton = document.createElement("button");
 
-rockButton.addEventListener("click", playRound())
+rockButton.textContent = "rock";
+paperButton.textContent = "paper";
+scissorsButton.textContent = "scissors";
+
+let container = document.createElement("div");
+
+rockButton.addEventListener("click", () => {
+    container.textContent = playRound("rock", getComputerChoice());
+});
+paperButton.addEventListener("click", () => {
+    container.textContent = playRound("paper", getComputerChoice())
+});
+scissorsButton.addEventListener("click", () => {
+    container.textContent = playRound("scissors", getComputerChoice())});
+
+
+let body = document.querySelector("body");
+
+body.appendChild(container);
+body.appendChild(rockButton);
+body.appendChild(paperButton);
+body.appendChild(scissorsButton);
+
 
 
 
