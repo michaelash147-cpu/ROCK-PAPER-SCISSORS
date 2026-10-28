@@ -28,30 +28,14 @@ function playRound(humanChoice, computerChoice) {
         }
     }
 
-        /*
-function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
-    function playRound(humanChoice, computerChoice) {
-        if (humanChoice===computerChoice) {
-            return "tie!"
-        } else if ((humanChoice==="rock" && computerChoice==="scissors")||(humanChoice==="paper" && computerChoice==="rock")||(humanChoice==="scissors" && computerChoice==="paper")) {
-            humanScore++
-            return "you win!" + " " + humanChoice + " beats " + computerChoice; 
-        } else {
-            computerScore++
-            return "you lose!" + " " + computerChoice + " beats " + humanChoice;
-        }
-    };
-    /*
-    for (let i=0; i<5; i++) {
-        console.log(playRound(getHumanChoice(), getComputerChoice()));
-        
-    }
-    return console.log("your score: " + humanScore)
-}; 
 
-*/
+function playGame() {
+    if (humanScore >= 5) {
+        container.textContent = "you win!"
+    } else if (computerScore >= 5) {
+        container.textContent = "you lose!"
+    }
+};
 
 let rockButton = document.createElement("button");
 let paperButton = document.createElement("button");
@@ -66,18 +50,38 @@ scissorsButton.textContent = "scissors";
 
 rockButton.addEventListener("click", () => {
     playRound("rock", getComputerChoice())
-    container.textContent = "your score: " + humanScore + "\ncomputer score: " + computerScore;
+    if (humanScore < 5 && computerScore < 5) {
+        container.textContent = "your score: " + humanScore + "\ncomputer score: " + computerScore;
+    } else if (humanScore >= 5) {
+        container.textContent = "you win!"
+    } else {
+        container.textContent = "you lose!"
+    }
+    
 });
 paperButton.addEventListener("click", () => {
     playRound("paper", getComputerChoice())
-    container.textContent = "your score: " + humanScore + "\ncomputer score: " + computerScore;
+    if (humanScore < 5 && computerScore < 5) {
+        container.textContent = "your score: " + humanScore + "\ncomputer score: " + computerScore;
+    } else if (humanScore >= 5) {
+        container.textContent = "you win!"
+    } else {
+        container.textContent = "you lose!"
+    }
 });
 scissorsButton.addEventListener("click", () => {
     playRound("scissors", getComputerChoice())
-    container.textContent = "your score: " + humanScore + "\ncomputer score: " + computerScore;
+    if (humanScore < 5 && computerScore < 5) {
+        container.textContent = "your score: " + humanScore + "\ncomputer score: " + computerScore;
+    } else if (humanScore >= 5) {
+        container.textContent = "you win!"
+    } else {
+        container.textContent = "you lose!"
+    }
 });
 
 container.style.whiteSpace = "pre-line";
+
 
 
 
@@ -86,7 +90,6 @@ body.appendChild(container);
 body.appendChild(rockButton);
 body.appendChild(paperButton);
 body.appendChild(scissorsButton);
-
 
 
 
