@@ -29,14 +29,6 @@ function playRound(humanChoice, computerChoice) {
     }
 
 
-function playGame() {
-    if (humanScore >= 5) {
-        container.textContent = "you win!"
-    } else if (computerScore >= 5) {
-        container.textContent = "you lose!"
-    }
-};
-
 let rockButton = document.createElement("button");
 let paperButton = document.createElement("button");
 let scissorsButton = document.createElement("button");
