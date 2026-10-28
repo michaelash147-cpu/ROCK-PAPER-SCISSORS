@@ -56,24 +56,31 @@ function playGame() {
 let rockButton = document.createElement("button");
 let paperButton = document.createElement("button");
 let scissorsButton = document.createElement("button");
+let container = document.createElement("div");
+let body = document.querySelector("body");
 
 rockButton.textContent = "rock";
 paperButton.textContent = "paper";
 scissorsButton.textContent = "scissors";
 
-let container = document.createElement("div");
 
 rockButton.addEventListener("click", () => {
-    container.textContent = playRound("rock", getComputerChoice());
+    playRound("rock", getComputerChoice())
+    container.textContent = "your score: " + humanScore + "\ncomputer score: " + computerScore;
 });
 paperButton.addEventListener("click", () => {
-    container.textContent = playRound("paper", getComputerChoice())
+    playRound("paper", getComputerChoice())
+    container.textContent = "your score: " + humanScore + "\ncomputer score: " + computerScore;
 });
 scissorsButton.addEventListener("click", () => {
-    container.textContent = playRound("scissors", getComputerChoice())});
+    playRound("scissors", getComputerChoice())
+    container.textContent = "your score: " + humanScore + "\ncomputer score: " + computerScore;
+});
+
+container.style.whiteSpace = "pre-line";
 
 
-let body = document.querySelector("body");
+
 
 body.appendChild(container);
 body.appendChild(rockButton);
